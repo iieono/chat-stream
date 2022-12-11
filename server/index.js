@@ -15,7 +15,8 @@ const twilioClient = require('twilio')(accountSid, authToken)
 
 
 app.use(cors({
-    origin: 'https://chat-stream.netlify.app/'
+    origin: 'https://chat-stream.netlify.app/',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }))
 app.use(express.json())
 app.use(express.urlencoded())
