@@ -12,16 +12,10 @@ const authToken = process.env.TWILIO_AUTH_TOKEN
 const serviceId = process.env.TWILIO_SERVICE_ID
 const twilioClient = require('twilio')(accountSid, authToken)
 
-
-
-app.use(cors({
-    origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}))
-
 app.use(express.json())
 app.use(express.urlencoded())
 
+app.use(cors())
 
 app.options('*', cors())
 app.get('/', (req, res)=>{
