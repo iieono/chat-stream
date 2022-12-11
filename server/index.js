@@ -17,7 +17,7 @@ app.use(express.urlencoded())
 
 app.use(cors())
 
-app.options('*', cors())
+app.options("*", cors({ origin: '*', optionsSuccessStatus: 200 }));
 app.get('/', (req, res)=>{
     res.send('Server Online')
 })

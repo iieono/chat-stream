@@ -31,14 +31,13 @@ function Auth() {
 
         const URL = 'https://chat-stream.vercel.app/auth'
 
-        const { data: {token, userId, hashedPassword, fullName} } = await axios.post(`${URL}/${isSignUp ? 'signup' : 'login'}`, {
-            body : {
-                fullName : form.fullName, username, password, phoneNumber, avatarURL
-            },
-            headers: {
+        const { data: {token, userId, hashedPassword, fullName} } = await axios.post(`${URL}/${isSignUp ? 'signup' : 'login'}`, 
+            { fullName : form.fullName, username, password, phoneNumber, avatarURL},
+            {headers: {
                 'Content-Type': 'application/json',
                 "Access-Control-Allow-Origin": "*",
-        }})
+            }
+        })
 
         cookies.set('token', token)
         cookies.set('username', username)
