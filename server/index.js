@@ -22,20 +22,17 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded())
 
-app.use((req, res, next)=>{
+const hello = (req, res, next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');
     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
     res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
     next(); 
-})
+}
 
 app.get('/', (req, res)=>{
     res.send('Server Online')
 })
-app.use('/auth', cors({
-    origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}), authRoutes)
+app.use('/auth', hello, authRoutes)
 
 app.post('/', (req, res)=>{
     const { message, user: sender, type, members } = req.body
