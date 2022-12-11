@@ -19,7 +19,7 @@ app.get('/', (req, res)=>{
     res.send('Server Online')
 })
 app.use('/auth', cors({
-    origin: 'https://chat-stream.netlify.app',
+    origin: '*',
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }), authRoutes)
 
